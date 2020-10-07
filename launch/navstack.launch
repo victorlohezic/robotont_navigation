@@ -7,7 +7,8 @@
         <remap from="cmd_vel" to="$(arg robotont_ns)/cmd_vel"/>
         <remap from="odom" to="$(arg robotont_ns)/odom"/>
         <rosparam file="$(find robotont_navigation)/config/move_base_params.yaml" command="load"/>
-        <rosparam file="$(find robotont_navigation)/config/local_planner_params.yaml" command="load" />
+        <rosparam file="$(find robotont_navigation)/config/planner_local_params.yaml" command="load" />
+        <rosparam file="$(find robotont_navigation)/config/planner_global_params.yaml" command="load" />
         <!-- observation sources located in costmap_common.yaml -->
         <rosparam file="$(find robotont_navigation)/config/costmap_common.yaml" command="load" ns="global_costmap" />
         <rosparam file="$(find robotont_navigation)/config/costmap_common.yaml" command="load" ns="local_costmap" />
