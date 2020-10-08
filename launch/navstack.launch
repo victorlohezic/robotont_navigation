@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="robotont_ns" default="robotont"/>
+    <!-- Launch navigation stack -->
+  <arg name="no_static_map" default="false"/>
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <remap from="cmd_vel" to="$(arg robotont_ns)/cmd_vel"/>
+        <remap from="odom" to="$(arg robotont_ns)/odom"/>
+        <rosparam file="$(find robotont_navigation)/config/move_base_params.yaml" command="load"/>
+        <rosparam file="$(find robotont_navigation)/config/planner_local_params.yaml" command="load" />
+        <rosparam file="$(find robotont_navigation)/config/planner_global_params.yaml" command="load" />
+        <!-- observation sources located in costmap_common.yaml -->
+        <rosparam file="$(find robotont_navigation)/config/costmap_common.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find robotont_navigation)/config/costmap_common.yaml" command="load" ns="local_costmap" />
+        <!-- local costmap, needs size -->
+        <rosparam file="$(find robotont_navigation)/config/costmap_local.yaml" command="load" ns="local_costmap" />
+        <param name="local_costmap/width" value="6.0"/>
+        <param name="local_costmap/height" value="6.0"/>
+        <!-- static global costmap, static map provides size -->
+        <rosparam file="$(find robotont_navigation)/config/costmap_global_static.yaml" command="load" ns="global_costmap" unless="$(arg no_static_map)"/>
+        <!-- global costmap with laser, for odom_navigation_demo -->
+        <rosparam file="$(find robotont_navigation)/config/costmap_global_laser.yaml" command="load" ns="global_costmap" if="$(arg no_static_map)"/>
+  </node>
+</launch>
