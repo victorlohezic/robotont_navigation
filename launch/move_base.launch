@@ -6,8 +6,9 @@
   <!-- When a namespace is specified, it is also converted into prefix with a trailing underscore. -->
   <arg if="$(eval eval_underscore_bypass == '')" name="prefix" default=''/> 
   <arg unless="$(eval eval_underscore_bypass == '')" name="prefix" default="$(arg __ns)_"/>
-   <!-- Launch navigation stack -->
+  <!-- Launch navigation stack -->
   <arg name="no_static_map" default="false"/>
+
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
         <remap from="cmd_vel" to="$(arg __ns)/cmd_vel"/>
         <remap from="odom" to="$(arg __ns)/odom"/>
