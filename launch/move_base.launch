@@ -3,7 +3,7 @@
   <!--
     '__ns' is needed as an explicit argument because it does not propagate as an argument to the included launch files.
     as eval may not contain double underscore expressions, a new argument (eval_underscore_bypass) is defined to by-pass this issue.
-    when a namespace is specified, it is also converted into prefix with a trailing slash.
+    when a namespace is specified, it is also converted into prefix with a trailing slash. 'prefix' is passed to yaml file (enabled by subst_value="true").
   -->
   <arg name="__ns" default=""/>
   <arg name="eval_underscore_bypass" value="$(arg __ns)"/>
