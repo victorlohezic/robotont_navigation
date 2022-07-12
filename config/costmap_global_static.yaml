@@ -1,6 +1,8 @@
 global_frame: map
 rolling_window: false
 track_unknown_space: true
+cost_scaling_factor: 1.0
+inflation_radius: 1.2
 
 plugins:
   - {name: static,                  type: "costmap_2d::StaticLayer"}

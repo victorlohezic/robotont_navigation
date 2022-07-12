@@ -1,0 +1,23 @@
+
+TebLocalPlannerROS:
+  holonomic_robot: true
+  #Global Costmap inflation
+  inflation_radius: 1.2
+  #GoalTolerance
+  xy_goal_tolerance: 0.4
+  yaw_goal_tolerance: 0.2
+  #Obstacles
+  min_obstacle_dist: 0.2
+  #Optimization
+  penalty_epsilon: 1.0
+  weight_kinematics_nh: 1.0
+  weight_kinematics_forward_drive: 20.0
+  weight_kinematics_turning_radius: 5.0
+  weight_optimaltime: 1000.0
+  #Robot
+  max_vel_y: 0.4
+  acc_lim_y: 0.5
+  #Trajectory
+  max_global_plan_lookahead_dist: 0.5
+  #ViaPoints
+  global_plan_viapoint_sep: 1.0
